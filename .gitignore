@@ -85,3 +85,5 @@ Objects/
 
 # JetBrains IDEs
 **/.idea
+**/cmake-build-debug
+**/cmake-release-debug
