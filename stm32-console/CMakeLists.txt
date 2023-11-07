@@ -10,10 +10,10 @@
 # ^copyright  Copyright SPSE Havirov (c) 2023
 #
 
-  cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.0)
 
 set(CMAKE_C_STANDARD_REQUIRED true)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(testbed testbed.c)
-target_link_directories(testbed PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_link_directories(testbed PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)

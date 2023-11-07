@@ -13,4 +13,14 @@
 #ifndef STM32_KIT_BTN
 #define STM32_KIT_BTN
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void BTN_setup(void);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* STM32_KIT_BTN */

@@ -12,4 +12,14 @@
 #ifndef STM32_KIT
 #define STM32_KIT
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define  BOARD_SETUP __attribute__((constructor))
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* STM32_KIT */

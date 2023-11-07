@@ -13,4 +13,16 @@
 #ifndef STM32_KIT_PLATFORM
 #define STM32_KIT_PLATFORM
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define CONSTEXPR __attribute__((const))
+#define INLINE_STM32 static inline
+#define CONSTEXPR __attribute__((const))
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif
