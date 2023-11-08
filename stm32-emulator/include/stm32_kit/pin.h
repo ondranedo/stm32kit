@@ -1,28 +1,31 @@
 /**
-  * @file     platform.h
+  * @file     pin.h
   * @author   Ondrej Nedojedly (https://www.github.com/ondranedo)
   * @version  0.0.1
   * @date     03-November-2023
   * @brief    TBS
   *
   *
-  * @note     Tento soubor je soucasti projektu stm32-console
+  * @note     Tento soubor je soucasti projektu stm32-emulator
   * @copyright  Copyright SPSE Havirov (c) 2023
   */
 
-#ifndef STM32_KIT_PLATFORM
-#define STM32_KIT_PLATFORM
+#ifndef STM32_KIT_PIN
+#define STM32_KIT_PIN
+
+#include "../stm32_kit.h"
+
+#include "platform.h"
+#include "chrono.h"
+#include "gpio.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define CONSTEXPR __attribute__((const))
-#define INLINE_STM32 static inline
-#define CONSTEXPR __attribute__((const))
 
 #ifdef __cplusplus
 }
 #endif
-
-#endif
+  
+#endif /* STM32_KIT_GPIO_SETUP */
