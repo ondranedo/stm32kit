@@ -1,0 +1,26 @@
+add_library(stm32-emulator-stm32 STATIC
+        "adc.c"
+        "../../include/stm32_kit/adc.h"
+        "button.c"
+        "../../include/stm32_kit/button.h"
+        "chrono.c"
+        "../../include/stm32_kit/chrono.h"
+        "gpio.c"
+        "../../include/stm32_kit/gpio.h"
+        "keypad.c"
+        "../../include/stm32_kit/keypad.h"
+        "lcd.c"
+        "../../include/stm32_kit/lcd.h"
+        "led.c"
+        "../../include/stm32_kit/led.h"
+        "pin.c"
+        "../../include/stm32_kit/pin.h"
+        "platform.c"
+        "../../include/stm32_kit/platform.h"
+        "timers.c"
+        "../../include/stm32_kit/timers.h"
+        "uart.c"
+        "../../include/stm32_kit/uart.h"
+)
+
+target_include_directories(stm32-emulator-stm32 PUBLIC "${CMAKE_SOURCE_DIR}/include")

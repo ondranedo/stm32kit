@@ -1,29 +1,26 @@
 /**
-  * @file     core.h
+  * @file     stm32f4xx.c
   * @author   Ondrej Nedojedly (https://www.github.com/ondranedo)
   * @version  0.0.1
   * @date     08-November-2023
-  * @brief    Hlavni soubor pro emulaci
-  *
   *
   * @note     Tento soubor je soucasti projektu stm32-emulator
   * @copyright  Copyright SPSE Havirov (c) 2023
   */
 
-#ifndef STM32KIT_CORE_H
-#define STM32KIT_CORE_H
+#include "stm32f4xx.h"
 
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+size_t SystemCoreClock;
 
-#define EMULATOR_API extern
+void SystemCoreClockUpdate(void)
+{
 
-#ifdef __cplusplus
 }
-#endif
 
-#endif //STM32KIT_CORE_H
+void SysTick_Config(uint32_t ticks)
+{
+
+}

@@ -1,29 +1,23 @@
 /**
-  * @file     core.h
+  * @file     kaypad.c
   * @author   Ondrej Nedojedly (https://www.github.com/ondranedo)
   * @version  0.0.1
   * @date     08-November-2023
-  * @brief    Hlavni soubor pro emulaci
-  *
   *
   * @note     Tento soubor je soucasti projektu stm32-emulator
   * @copyright  Copyright SPSE Havirov (c) 2023
   */
 
-#ifndef STM32KIT_CORE_H
-#define STM32KIT_CORE_H
+#include "stm32_kit/keypad.h"
 
 #include <stdint.h>
-#include <stddef.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#define EMULATOR_API extern
-
-#ifdef __cplusplus
+uint8_t KBD_read(void)
+{
+    return 0;
 }
-#endif
 
-#endif //STM32KIT_CORE_H
+void KBD_setup(void)
+{
+
+}

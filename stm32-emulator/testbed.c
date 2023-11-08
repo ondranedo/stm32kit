@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include <string.h>
 
 #include "include/stm32_kit.h"
 #include "include/stm32_kit/lcd.h"
