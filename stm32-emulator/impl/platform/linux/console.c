@@ -47,28 +47,33 @@ static char* colorBToAnsi(enum Color c)
     return "";
 }
 
-void Console_Clear(void)
+void Console_clear(void)
 {
-    Console_SetColor(DEFAULT, DEFAULT);
+    Console_setColor(DEFAULT, DEFAULT);
     printf("\033[H\033[J");
+    Console_clearStdin();
     fflush(stdout);
-    fflush(stdin);
     fflush(stderr);
 }
 
 
-void Console_ReadStdin(char *buffer, size_t size)
+void Console_readStdin(char *buffer, size_t size)
 {
     fgets(buffer, size, stdin);
 }
 
-void Console_WriteStdout(const char *buffer)
+void Console_writeStdout(const char *buffer)
 {
     fprintf(stdout, "%s", buffer);
     fflush(stdout);
 }
 
-void Console_SetColor(enum Color foreground, enum Color background)
+void Console_setColor(enum Color foreground, enum Color background)
 {
     printf("\033[0;%s;%sm", colorBToAnsi(background),colorFToAnsi(foreground));
+}
+
+void Console_clearStdin()
+{
+    fflush(stdin);
 }

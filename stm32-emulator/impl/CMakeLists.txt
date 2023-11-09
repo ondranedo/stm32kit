@@ -7,12 +7,17 @@ else()
 endif()
 
 add_library(stm32-emulator-impl STATIC
+        ${PLATFORM}
         "stm32f4xx.c"
         "stm32f4xx.h"
         "core.h"
         "console.c"
         "console.h"
-        ${PLATFORM}
+        "input.c"
+        "input.h"
+        "core.c"
+        "keypad/Keypad.h"
+        "keypad/Keypad.c"
 )
 
 add_subdirectory(kit)

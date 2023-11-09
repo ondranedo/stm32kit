@@ -10,14 +10,13 @@
 
 #include "stm32f4xx.h"
 
-#include <stddef.h>
-#include <stdint.h>
+#include "../impl/core.h"
 
 size_t SystemCoreClock;
 
 void SystemCoreClockUpdate(void)
 {
-
+    Core_init();
 }
 
 void SysTick_Config(uint32_t ticks)

@@ -22,7 +22,7 @@
 extern "C" {
 #endif
 
-#define BOARD_SETUP __attribute__((constructor))
+#define BOARD_SETUP EMULATOR_CONSTRUCTOR
 
 #ifdef __cplusplus
 }

@@ -43,6 +43,11 @@ extern "C" {
 #   define KEYPAD_STEP  150
 #endif
 
+/**
+ * @brief Mapa klavesnice, musi byt definovana pred vlozenim keypad.h
+ */
+extern uint8_t KBD_MAP[KEYPAD_ROWS][KEYPAD_COLS];
+
 #ifdef __cplusplus
 }
 #endif

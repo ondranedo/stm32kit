@@ -19,10 +19,6 @@
 extern "C" {
 #endif
 
-#ifndef KBD_MAP // V pripade, ze nebude definovano pole pro rozlozeni KeyPad, definuje se
-static uint8_t KBD_MAP[KEYPAD_ROWS][KEYPAD_COLS];
-#endif
-
 /**
  * @brief  Funkce pro zisteni stisknute klavesy.
  *

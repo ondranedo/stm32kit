@@ -20,7 +20,25 @@
 extern "C" {
 #endif
 
+
 #define EMULATOR_API extern
+#define EMULATOR_CONSTRUCTOR __attribute__((constructor))
+
+
+/**
+ * @brief   Inicializace jadra emulatoru
+ */
+EMULATOR_API void Core_init(void);
+
+/**
+ * @brief   Uvolneni jadra emulatoru
+ */
+EMULATOR_API void Core_release(void);
+
+/**
+ * @brief   Nastaveni hodinoveho signalu
+ */
+EMULATOR_API void Core_sysTick_Config(uint32_t ticks);
 
 #ifdef __cplusplus
 }
