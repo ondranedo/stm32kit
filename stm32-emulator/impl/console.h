@@ -38,12 +38,12 @@ enum Color {
  * @param foreground Barva textu
  * @param background Barva pozadi
  */
-EMULATOR_API void Console_setColor(enum Color foreground, enum Color background);
+EMULATOR_API void console_set_color(enum Color foreground, enum Color background);
 
 /**
  * @brief Smaze stdout
  */
-EMULATOR_API void Console_clear(void);
+EMULATOR_API void console_clear(void);
 
 /**
  * @brief Precte stdin
@@ -51,20 +51,27 @@ EMULATOR_API void Console_clear(void);
  * @param buffer buffer do ktereho se ulozi vstup
  * @param size size velikost bufferu
  */
-EMULATOR_API void Console_readStdin(char *buffer, size_t size);
+EMULATOR_API void console_stdin_read(char *buffer, size_t size);
 
 /**
  * @brief Smaze obsah stdin souboru
  *
  */
-EMULATOR_API void Console_clearStdin();
+EMULATOR_API void console_stdin_clear();
 
 /**
  *  @brief Vypise do stdout
  *
  *  @param buffer buffer ktery se vypise, musi byt ukoncen znakem '\0'
  */
-EMULATOR_API void Console_writeStdout(const char *buffer);
+EMULATOR_API void console_stdout_write(const char *buffer);
+
+/**
+ * @brief Ziska znak z stdin (bez nutnosti stisknout enter)
+ *
+ * @return Vrati znak z stdin
+ */
+EMULATOR_API char console_stdin_get_char();
 
 #ifdef __cplusplus
 }

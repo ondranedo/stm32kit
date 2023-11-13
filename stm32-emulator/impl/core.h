@@ -28,17 +28,17 @@ extern "C" {
 /**
  * @brief   Inicializace jadra emulatoru
  */
-EMULATOR_API void Core_init(void);
+EMULATOR_API void core_init(void);
 
 /**
  * @brief   Uvolneni jadra emulatoru
  */
-EMULATOR_API void Core_release(void);
+EMULATOR_API void core_release(void);
 
 /**
  * @brief   Nastaveni hodinoveho signalu
  */
-EMULATOR_API void Core_sysTick_Config(uint32_t ticks);
+EMULATOR_API void core_config_systick(uint32_t ticks);
 
 #ifdef __cplusplus
 }

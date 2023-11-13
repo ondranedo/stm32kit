@@ -15,11 +15,11 @@
 
 #include <stdio.h>
 
-Keypad_PosXY Keypad_getXYfromInput(int input)
+KeypadPos keypad_convert_input_to_pos(int input)
 {
     int c = input - KEYPAD_BEGIN;
 
-    struct Keypad_PosXY pos = {
+    struct KeypadPos pos = {
             c % KEYPAD_COLS,
             c / KEYPAD_COLS
     };
@@ -27,28 +27,28 @@ Keypad_PosXY Keypad_getXYfromInput(int input)
     return pos;
 }
 
-uint8_t Keypad_getCharFromPos(Keypad_PosXY pos) {
+uint8_t keypad_convert_pos_to_char(KeypadPos pos) {
     return KBD_MAP[pos.y][pos.x];
 }
 
-uint16_t Keypad_getRelativePosFromPos(Keypad_PosXY pos) {
+uint16_t kaypad_convert_pos_to_relative(KeypadPos pos) {
     return pos.y * KEYPAD_COLS + pos.x;
 }
 
-Keypad_PosXY Keypad_getXYfromChar(uint8_t character)
+KeypadPos keypad_convert_char_to_pos(uint8_t character)
 {
     for (int y = 0; y < KEYPAD_ROWS; ++y)
     {
         for (int x = 0; x < KEYPAD_COLS; ++x)
         {
             if (KBD_MAP[y][x] == character) {
-                Keypad_PosXY pos;
+                KeypadPos pos;
                 pos.x = x;
                 pos.y = y;
                 return pos;
             }
         }
     }
-    Keypad_PosXY pos = {0, 0};
+    KeypadPos pos = {0, 0};
     return pos;
 }

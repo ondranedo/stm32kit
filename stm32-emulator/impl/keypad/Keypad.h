@@ -26,17 +26,17 @@ extern "C" {
  *
  * X je sloupec, Y je radek, pocitano od 0; levy horni roh
  */
-struct Keypad_PosXY {
+struct KeypadPos {
     uint8_t x, y;
 };
-typedef struct Keypad_PosXY Keypad_PosXY;
+typedef struct KeypadPos KeypadPos;
 
 /**
  * @brief Prevede input od uzivatele na X,Y pozici na keypadu
  *
  * @return enum Input - ziskany input
  */
-EMULATOR_API Keypad_PosXY Keypad_getXYfromInput(int input);
+EMULATOR_API KeypadPos keypad_convert_input_to_pos(int input);
 
 /**
  * @brief vrati pripony znak na dane pozici
@@ -44,7 +44,7 @@ EMULATOR_API Keypad_PosXY Keypad_getXYfromInput(int input);
  *
  * @return char - znak na dane pozici
  */
-EMULATOR_API uint8_t Keypad_getCharFromPos(Keypad_PosXY pos);
+EMULATOR_API uint8_t keypad_convert_pos_to_char(KeypadPos pos);
 
 /**
  * @brief Vrati X, Y pozici na keypadu podle znaku
@@ -53,7 +53,7 @@ EMULATOR_API uint8_t Keypad_getCharFromPos(Keypad_PosXY pos);
  *
  * @return X, Y pozice
  */
-EMULATOR_API Keypad_PosXY Keypad_getXYfromChar(uint8_t character);
+EMULATOR_API KeypadPos keypad_convert_char_to_pos(uint8_t character);
 
 /**
  * @brief Vrati Relativni pozici na keypadu podle X, Y pozice
@@ -62,7 +62,7 @@ EMULATOR_API Keypad_PosXY Keypad_getXYfromChar(uint8_t character);
  *
  * @return Y * KEYPAD_COLS + X; pozice
  */
-EMULATOR_API uint16_t Keypad_getRelativePosFromPos(Keypad_PosXY pos);
+EMULATOR_API uint16_t kaypad_convert_pos_to_relative(KeypadPos pos);
 #ifdef __cplusplus
 }
 #endif

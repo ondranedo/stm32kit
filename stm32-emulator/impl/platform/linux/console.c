@@ -12,6 +12,7 @@
 #include "../../console.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 static char* colorFToAnsi(enum Color c)
 {
@@ -23,7 +24,7 @@ static char* colorFToAnsi(enum Color c)
         case BLUE:      return "34";
         case MAGENTA:   return "35";
         case CYAN:      return "36";
-        case DEFAULT:
+        case DEFAULT:   return "00";
         case WHITE:     return "37";
     }
 
@@ -33,7 +34,7 @@ static char* colorFToAnsi(enum Color c)
 static char* colorBToAnsi(enum Color c)
 {
     switch (c) {
-        case DEFAULT:
+        case DEFAULT:   return "00";
         case BLACK:     return "40";
         case RED:       return "41";
         case GREEN:     return "42";
@@ -47,33 +48,41 @@ static char* colorBToAnsi(enum Color c)
     return "";
 }
 
-void Console_clear(void)
+void console_clear(void)
 {
-    Console_setColor(DEFAULT, DEFAULT);
+    console_set_color(DEFAULT, DEFAULT);
     printf("\033[H\033[J");
-    Console_clearStdin();
+    console_stdin_clear();
     fflush(stdout);
     fflush(stderr);
 }
 
 
-void Console_readStdin(char *buffer, size_t size)
+void console_stdin_read(char *buffer, size_t size)
 {
     fgets(buffer, size, stdin);
 }
 
-void Console_writeStdout(const char *buffer)
+void console_stdout_write(const char *buffer)
 {
     fprintf(stdout, "%s", buffer);
     fflush(stdout);
 }
 
-void Console_setColor(enum Color foreground, enum Color background)
+void console_set_color(enum Color foreground, enum Color background)
 {
     printf("\033[0;%s;%sm", colorBToAnsi(background),colorFToAnsi(foreground));
 }
 
-void Console_clearStdin()
+void console_stdin_clear()
 {
     fflush(stdin);
+}
+
+char console_stdin_get_char()
+{
+    system("/bin/stty raw");
+    char c = getc(stdin);
+    system("/bin/stty cooked");
+    return c;
 }

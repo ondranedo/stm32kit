@@ -21,18 +21,18 @@
 extern "C" {
 #endif
 
-enum Input_Input {
-    INPUT_NONE = 0, INPUT_INTER = 1, INPUT_USER_BTN = 2,
+enum Input {
+    INPUT_NONE = 0, INPUT_TERMINATE, INPUT_INTER, INPUT_USER_BTN,
     INPUT_KEYPAD = KEYPAD_BEGIN
 };
-typedef enum Input_Input Input_Input;
+typedef enum Input Input;
 
 /**
- * @brief Ziska input od uzivatele, ceka
+ * @brief Ziska input od uzivatele, ceka na vstup
  *
  * @return enum Input - ziskany input
  */
-EMULATOR_API Input_Input Input_getInput(void);
+EMULATOR_API Input input_get_input(void);
 
 #ifdef __cplusplus
 }

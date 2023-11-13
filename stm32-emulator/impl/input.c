@@ -12,35 +12,22 @@
 #include "input.h"
 #include "console.h"
 
-#define MAX_INPUT_BUFFER 1024
-
-#include <string.h>
-
-enum Input_Input translateInput(char* buff) {
-    if (buff[0]) {
-        if(buff[0] == 'I') return INPUT_INTER;
-        if(buff[0] == 'B') return INPUT_USER_BTN;
-        if(buff[0] == 'K') {
-            if(buff[1] == ' ') {
-                return KEYPAD_BEGIN + Keypad_getRelativePosFromPos(Keypad_getXYfromChar(buff[2]));
-            }
-        }
-    }
-
-     // TODO: print help
+enum Input translateInput(char ch) {
+    if(ch == 'i') return INPUT_INTER;
+    if(ch == 'b') return INPUT_USER_BTN;
+    if(ch == 'k') return INPUT_KEYPAD;
+    if(ch == 'x') return INPUT_TERMINATE;
 
     return INPUT_NONE;
 }
 
-enum Input_Input Input_getInput(void)
+enum Input input_get_input(void)
 {
-    Console_setColor(BLUE, DEFAULT);
-    Console_writeStdout("Emulator > ");
-    Console_setColor(DEFAULT, DEFAULT);
+    Input input;
+    do {
+        input = translateInput(console_stdin_get_char());
+        console_clear();
+    } while(input == INPUT_NONE);
 
-    char buff[MAX_INPUT_BUFFER] = { 0 };
-    Console_clearStdin();
-    Console_readStdin(buff, MAX_INPUT_BUFFER);
-
-    return translateInput(buff);
+    return input;
 }

@@ -16,7 +16,7 @@ size_t SystemCoreClock;
 
 void SystemCoreClockUpdate(void)
 {
-    Core_init();
+    core_init();
 }
 
 void SysTick_Config(uint32_t ticks)

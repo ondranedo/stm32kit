@@ -17,48 +17,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-pthread_t core_thread;
+static pthread_t core_thread;
+static pthread_mutex_t mutex;
+
+static uint32_t ticks = 0;
+
+#include <sys/types.h>
+#include <string.h>
 
 static void* core_loop(void* args) {
-    Console_clear();
+    while (1) {
+        Input input = input_get_input();
 
-    while(1)
-    {
-        enum Input_Input input = Input_getInput();
-        struct Keypad_PosXY s;
-
-        if(input == INPUT_INTER)
-        {
-
+        if(input == INPUT_TERMINATE) {
+            exit(0);
         }
-        if(input == INPUT_USER_BTN)
-        {
 
+        if(input == INPUT_INTER) {
+            console_stdout_write("Interrupt event\n");
         }
-        if(input >= INPUT_KEYPAD)
-        {
-            s = Keypad_getXYfromInput(input);
+
+        if(input == INPUT_USER_BTN) {
+            console_stdout_write("User button event\n");
         }
     }
-
-    Console_setColor(DEFAULT, DEFAULT);
-
-    Core_release();
-
-    exit(1);
 }
 
 
-void Core_init(void) {
+void core_init(void) {
     pthread_create(&core_thread, NULL, core_loop, NULL);
-    Console_writeStdout("Core init started\n");
 }
 
-void Core_release(void) {
+void core_release(void) {
     pthread_join(core_thread, NULL);
 }
 
-void Core_sysTick_Config(uint32_t ticks)
+void core_config_systick(uint32_t ticks)
 {
+    pthread_mutex_lock(&mutex);
 
+
+
+    pthread_mutex_unlock(&mutex);
 }
